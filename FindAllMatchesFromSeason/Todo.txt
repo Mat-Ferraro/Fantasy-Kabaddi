@@ -1,0 +1,6 @@
+Don't just link to the match URL. 
+Pull the html from it and run our other python script to grab and save the data.
+- Should we collect all the match data into a single spreadsheet?
+- Should we add fields to easily determine who won the match?
+
+- Fix Match Number
