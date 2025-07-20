@@ -320,22 +320,25 @@ def combine_csv_files(input_folder, output_file):
         print("❌ No CSV files found to combine.")
 
 def Main():
-    season = "Season10"
-    # Path to your HTML file
-    html_path = f"C:\\ProgrammingProjects\\Kabaddi\\{season}-Matches.html"  
-     
-    saveLoc = f"C:\\ProgrammingProjects\\Kabaddi\\Fantasy-Kabaddi\\{season}"
-    scores_path = saveLoc + "\\FinalScores"
-    playoff_path = scores_path + "\\Playoffs"
-    os.makedirs(playoff_path, exist_ok=True)
     
-    finalScores = ParseSeasonStatsHTML(html_path, scores_path)
+    for i in range(11, 0 , -1):
+        season = f"Season{i}"
 
-    finalScores.to_csv(f"{saveLoc}\\Kabaddi_{season}_MatchResults.csv", index=False)
-    print("Saved to kabaddi_match_details_complete.csv with", len(finalScores), "matches.")
-    
-    combine_csv_files(scores_path, saveLoc + f"\\Kabaddi_{season}_AllPlayerStats")
-    print("COMPLETE")
+        # Path to your HTML file
+        html_path = f"C:\\ProgrammingProjects\\Kabaddi\\{season}-Matches.html"  
+        
+        saveLoc = f"C:\\ProgrammingProjects\\Kabaddi\\Fantasy-Kabaddi\\{season}"
+        scores_path = saveLoc + "\\FinalScores"
+        playoff_path = scores_path + "\\Playoffs"
+        os.makedirs(playoff_path, exist_ok=True)
+        
+        finalScores = ParseSeasonStatsHTML(html_path, scores_path)
+
+        finalScores.to_csv(f"{saveLoc}\\Kabaddi_{season}_MatchResults.csv", index=False)
+        print("Saved to kabaddi_match_details_complete.csv with", len(finalScores), "matches.")
+        
+        combine_csv_files(scores_path, saveLoc + f"\\Kabaddi_{season}_AllPlayerStats.csv")
+        print("COMPLETE")
     
 
 
